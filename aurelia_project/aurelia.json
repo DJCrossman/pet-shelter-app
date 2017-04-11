@@ -102,6 +102,7 @@
           "aurelia-framework",
           "aurelia-history",
           "aurelia-history-browser",
+          "aurelia-http-client",
           "aurelia-loader",
           "aurelia-loader-default",
           "aurelia-logging",
@@ -132,6 +133,14 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
+          },
+          {
+            "name": "moment",
+            "path": "../node_modules/moment/moment"
+          },
+          {
+            "name": "fetch",
+            "path": "../node_modules/whatwg-fetch/fetch"
           }
         ]
       }
