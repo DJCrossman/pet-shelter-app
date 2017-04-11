@@ -1,0 +1,38 @@
+<template>
+  <section class="au-animate level">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+            <h2>${heading}</h2>
+            <h3>${subheading}</h3>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Breed</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr repeat.for="pet of pets">
+                <td>${pet.name}</td>
+                <td>${pet.typeName}</td>
+                <td>${pet.breedName}</td>
+                <td><a href="#pets/${pet.id}" class="pull-right">View <i class="fa fa-paw"></i></a></td>
+              </tr>
+              <tr if.bind="!pets.length">
+                <td colspan="4">No pets to be found.</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <th colspan="4"><a href="#pets/new" class="pull-right"><i class="fa fa-plus"></i> Add a new pet</a></th>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
