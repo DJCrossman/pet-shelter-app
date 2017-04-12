@@ -3,7 +3,53 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-            <h2>${heading}</h2>
+          <h2>${heading}</h2>
+        </div>
+        <div class="col-md-12">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="name" class="col-sm-offset-2 col-sm-2 control-label">Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="name" value.bind="pet.name" placeholder="Enter a name...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="typeName" class="col-sm-offset-2 col-sm-2 control-label">Type</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="typeName" value.bind="pet.typeName" placeholder="Enter a type...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="breedName" class="col-sm-offset-2 col-sm-2 control-label">Breed</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="breedName" value.bind="pet.breedName" placeholder="Enter a breed...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="location" class="col-sm-offset-2 col-sm-2 control-label">Location</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="location" value.bind="pet.location" placeholder="Enter a location...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lat" class="col-sm-offset-2 col-sm-2 control-label">Latitude</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="lat" value.bind="pet.lat" placeholder="Enter a latitude...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="long" class="col-sm-offset-2 col-sm-2 control-label">Longitude</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="long" value.bind="pet.long" placeholder="Enter a longitude...">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10 text-right">
+                <a href="#pets" class="btn btn-link" ref="cancel">Go back</a>
+                <button class="btn btn-default" click.delegate="addMyPet()" ref="save" data-loading-text="Adding your pet...">Add my pet!</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
