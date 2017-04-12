@@ -34,12 +34,12 @@ define('endpoints',["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     var Endpoints = {
         PetShelterAPI: 'https://pet-shelter-services.herokuapp.com',
-        ForecastAPI: 'https://api.darksky.net/forecast'
+        ForecastAPI: 'https://crossorigin.me/https://api.darksky.net/forecast'
     };
     exports.default = Endpoints;
 });
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVuZHBvaW50cy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFBQSxJQUFNLFNBQVMsR0FBRztRQUNkLGFBQWEsRUFBRSw0Q0FBNEM7UUFDM0QsV0FBVyxFQUFFLGtDQUFrQztLQUNsRCxDQUFDO0lBQ0Ysa0JBQWUsU0FBUyxDQUFDIiwiZmlsZSI6ImVuZHBvaW50cy5qcyIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0IEVuZHBvaW50cyA9IHtcbiAgICBQZXRTaGVsdGVyQVBJOiAnaHR0cHM6Ly9wZXQtc2hlbHRlci1zZXJ2aWNlcy5oZXJva3VhcHAuY29tJyxcbiAgICBGb3JlY2FzdEFQSTogJ2h0dHBzOi8vYXBpLmRhcmtza3kubmV0L2ZvcmVjYXN0J1xufTtcbmV4cG9ydCBkZWZhdWx0IEVuZHBvaW50cztcbiJdLCJzb3VyY2VSb290Ijoic3JjIn0=
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVuZHBvaW50cy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFBQSxJQUFNLFNBQVMsR0FBRztRQUNkLGFBQWEsRUFBRSw0Q0FBNEM7UUFDM0QsV0FBVyxFQUFFLHlEQUF5RDtLQUN6RSxDQUFDO0lBQ0Ysa0JBQWUsU0FBUyxDQUFDIiwiZmlsZSI6ImVuZHBvaW50cy5qcyIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0IEVuZHBvaW50cyA9IHtcbiAgICBQZXRTaGVsdGVyQVBJOiAnaHR0cHM6Ly9wZXQtc2hlbHRlci1zZXJ2aWNlcy5oZXJva3VhcHAuY29tJyxcbiAgICBGb3JlY2FzdEFQSTogJ2h0dHBzOi8vY3Jvc3NvcmlnaW4ubWUvaHR0cHM6Ly9hcGkuZGFya3NreS5uZXQvZm9yZWNhc3QnXG59O1xuZXhwb3J0IGRlZmF1bHQgRW5kcG9pbnRzO1xuIl0sInNvdXJjZVJvb3QiOiJzcmMifQ==
 
 define('environment',["require", "exports"], function (require, exports) {
     "use strict";
@@ -158,20 +158,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define('pet/details',["require", "exports", "./pet-service", "aurelia-framework"], function (require, exports, pet_service_1, aurelia_framework_1) {
+define('pet/details',["require", "exports", "../forecast/forecast-service", "./pet-service", "aurelia-framework"], function (require, exports, forecast_service_1, pet_service_1, aurelia_framework_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var Pet = (function () {
-        function Pet(api) {
-            this.api = api;
+        function Pet(petApi, forecastApi) {
+            this.petApi = petApi;
+            this.forecastApi = forecastApi;
         }
         Pet.prototype.activate = function (params) {
             var _this = this;
-            this.api.get(params.id).then(function (pet) { return _this.pet = pet; });
+            this.petApi.get(params.id).then(function (pet) {
+                _this.pet = pet;
+                _this.forecastApi.get(pet.lat, pet.long).then(function (forecast) {
+                    _this.isRaining = forecast.currently.icon === 'rain';
+                });
+            });
         };
         Object.defineProperty(Pet.prototype, "heading", {
             get: function () {
-                return 'Yup';
+                return this.isRaining ? 'Yes' : 'Nope';
             },
             enumerable: true,
             configurable: true
@@ -180,7 +186,7 @@ define('pet/details',["require", "exports", "./pet-service", "aurelia-framework"
             get: function () {
                 if (!this.pet)
                     return '';
-                return "It looks like " + this.pet.name + " is going to need one in " + this.pet.location + ".";
+                return "It looks like " + this.pet.name + " is " + (this.isRaining ? '' : 'not ') + "going to need one in " + this.pet.location + ".";
             },
             enumerable: true,
             configurable: true
@@ -188,13 +194,13 @@ define('pet/details',["require", "exports", "./pet-service", "aurelia-framework"
         return Pet;
     }());
     Pet = __decorate([
-        aurelia_framework_1.inject(pet_service_1.PetService),
-        __metadata("design:paramtypes", [pet_service_1.PetService])
+        aurelia_framework_1.inject(pet_service_1.PetService, forecast_service_1.ForecastService),
+        __metadata("design:paramtypes", [pet_service_1.PetService, forecast_service_1.ForecastService])
     ], Pet);
     exports.Pet = Pet;
 });
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBldC9kZXRhaWxzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7OztJQUlBLElBQWEsR0FBRztRQUdkLGFBQW9CLEdBQWU7WUFBZixRQUFHLEdBQUgsR0FBRyxDQUFZO1FBQUcsQ0FBQztRQUV2QyxzQkFBUSxHQUFSLFVBQVMsTUFBTTtZQUFmLGlCQUVDO1lBREcsSUFBSSxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsTUFBTSxDQUFDLEVBQUUsQ0FBQyxDQUFDLElBQUksQ0FBQyxVQUFDLEdBQU8sSUFBSyxPQUFBLEtBQUksQ0FBQyxHQUFHLEdBQUcsR0FBRyxFQUFkLENBQWMsQ0FBQyxDQUFDO1FBQzlELENBQUM7UUFFRCxzQkFBSSx3QkFBTztpQkFBWDtnQkFDRSxNQUFNLENBQUMsS0FBSyxDQUFDO1lBQ2YsQ0FBQzs7O1dBQUE7UUFFRCxzQkFBSSx3QkFBTztpQkFBWDtnQkFDRSxFQUFFLENBQUEsQ0FBQyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUM7b0JBQUMsTUFBTSxDQUFDLEVBQUUsQ0FBQztnQkFDeEIsTUFBTSxDQUFDLG1CQUFpQixJQUFJLENBQUMsR0FBRyxDQUFDLElBQUksaUNBQTRCLElBQUksQ0FBQyxHQUFHLENBQUMsUUFBUSxNQUFHLENBQUM7WUFDeEYsQ0FBQzs7O1dBQUE7UUFDSCxVQUFDO0lBQUQsQ0FqQkEsQUFpQkMsSUFBQTtJQWpCWSxHQUFHO1FBRGYsMEJBQU0sQ0FBQyx3QkFBVSxDQUFDO3lDQUlRLHdCQUFVO09BSHhCLEdBQUcsQ0FpQmY7SUFqQlksa0JBQUciLCJmaWxlIjoicGV0L2RldGFpbHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge1BldFNlcnZpY2V9IGZyb20gJy4vcGV0LXNlcnZpY2UnO1xuaW1wb3J0IHtpbmplY3R9IGZyb20gJ2F1cmVsaWEtZnJhbWV3b3JrJztcblxuQGluamVjdChQZXRTZXJ2aWNlKVxuZXhwb3J0IGNsYXNzIFBldCB7c1xuICBwcml2YXRlIHBldDogYW55O1xuXG4gIGNvbnN0cnVjdG9yKHByaXZhdGUgYXBpOiBQZXRTZXJ2aWNlKXsgfVxuXG4gIGFjdGl2YXRlKHBhcmFtcyl7XG4gICAgICB0aGlzLmFwaS5nZXQocGFyYW1zLmlkKS50aGVuKChwZXQ6YW55KSA9PiB0aGlzLnBldCA9IHBldCk7XG4gIH1cblxuICBnZXQgaGVhZGluZygpIHtcbiAgICByZXR1cm4gJ1l1cCc7XG4gIH1cblxuICBnZXQgbWVzc2FnZSgpIHtcbiAgICBpZighdGhpcy5wZXQpIHJldHVybiAnJztcbiAgICByZXR1cm4gYEl0IGxvb2tzIGxpa2UgJHt0aGlzLnBldC5uYW1lfSBpcyBnb2luZyB0byBuZWVkIG9uZSBpbiAke3RoaXMucGV0LmxvY2F0aW9ufS5gO1xuICB9XG59XG4iXSwic291cmNlUm9vdCI6InNyYyJ9
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBldC9kZXRhaWxzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7OztJQUtBLElBQWEsR0FBRztRQUlkLGFBQW9CLE1BQWtCLEVBQVUsV0FBNEI7WUFBeEQsV0FBTSxHQUFOLE1BQU0sQ0FBWTtZQUFVLGdCQUFXLEdBQVgsV0FBVyxDQUFpQjtRQUFHLENBQUM7UUFFaEYsc0JBQVEsR0FBUixVQUFTLE1BQU07WUFBZixpQkFPQztZQU5HLElBQUksQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxFQUFFLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBQyxHQUFPO2dCQUN0QyxLQUFJLENBQUMsR0FBRyxHQUFHLEdBQUcsQ0FBQztnQkFDZixLQUFJLENBQUMsV0FBVyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBQyxRQUFZO29CQUN4RCxLQUFJLENBQUMsU0FBUyxHQUFHLFFBQVEsQ0FBQyxTQUFTLENBQUMsSUFBSSxLQUFLLE1BQU0sQ0FBQztnQkFDdEQsQ0FBQyxDQUFDLENBQUM7WUFDTCxDQUFDLENBQUMsQ0FBQztRQUNQLENBQUM7UUFFRCxzQkFBSSx3QkFBTztpQkFBWDtnQkFDRSxNQUFNLENBQUMsSUFBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLEdBQUcsTUFBTSxDQUFDO1lBQ3pDLENBQUM7OztXQUFBO1FBRUQsc0JBQUksd0JBQU87aUJBQVg7Z0JBQ0UsRUFBRSxDQUFBLENBQUMsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDO29CQUFDLE1BQU0sQ0FBQyxFQUFFLENBQUM7Z0JBQ3hCLE1BQU0sQ0FBQyxtQkFBaUIsSUFBSSxDQUFDLEdBQUcsQ0FBQyxJQUFJLGFBQU8sSUFBSSxDQUFDLFNBQVMsR0FBRyxFQUFFLEdBQUcsTUFBTSw4QkFBd0IsSUFBSSxDQUFDLEdBQUcsQ0FBQyxRQUFRLE1BQUcsQ0FBQztZQUN2SCxDQUFDOzs7V0FBQTtRQUNILFVBQUM7SUFBRCxDQXZCQSxBQXVCQyxJQUFBO0lBdkJZLEdBQUc7UUFEZiwwQkFBTSxDQUFDLHdCQUFVLEVBQUUsa0NBQWUsQ0FBQzt5Q0FLTix3QkFBVSxFQUF1QixrQ0FBZTtPQUpqRSxHQUFHLENBdUJmO0lBdkJZLGtCQUFHIiwiZmlsZSI6InBldC9kZXRhaWxzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtGb3JlY2FzdFNlcnZpY2V9IGZyb20gJy4uL2ZvcmVjYXN0L2ZvcmVjYXN0LXNlcnZpY2UnO1xuaW1wb3J0IHtQZXRTZXJ2aWNlfSBmcm9tICcuL3BldC1zZXJ2aWNlJztcbmltcG9ydCB7aW5qZWN0fSBmcm9tICdhdXJlbGlhLWZyYW1ld29yayc7XG5cbkBpbmplY3QoUGV0U2VydmljZSwgRm9yZWNhc3RTZXJ2aWNlKVxuZXhwb3J0IGNsYXNzIFBldCB7XG4gIHByaXZhdGUgcGV0OiBhbnk7XG4gIHByaXZhdGUgaXNSYWluaW5nOiBib29sZWFuO1xuXG4gIGNvbnN0cnVjdG9yKHByaXZhdGUgcGV0QXBpOiBQZXRTZXJ2aWNlLCBwcml2YXRlIGZvcmVjYXN0QXBpOiBGb3JlY2FzdFNlcnZpY2UpeyB9XG5cbiAgYWN0aXZhdGUocGFyYW1zKXtcbiAgICAgIHRoaXMucGV0QXBpLmdldChwYXJhbXMuaWQpLnRoZW4oKHBldDphbnkpID0+IHtcbiAgICAgICAgdGhpcy5wZXQgPSBwZXQ7XG4gICAgICAgIHRoaXMuZm9yZWNhc3RBcGkuZ2V0KHBldC5sYXQsIHBldC5sb25nKS50aGVuKChmb3JlY2FzdDphbnkpID0+IHtcbiAgICAgICAgICB0aGlzLmlzUmFpbmluZyA9IGZvcmVjYXN0LmN1cnJlbnRseS5pY29uID09PSAncmFpbic7XG4gICAgICAgIH0pO1xuICAgICAgfSk7XG4gIH1cblxuICBnZXQgaGVhZGluZygpIHtcbiAgICByZXR1cm4gdGhpcy5pc1JhaW5pbmcgPyAnWWVzJyA6ICdOb3BlJztcbiAgfVxuXG4gIGdldCBtZXNzYWdlKCkge1xuICAgIGlmKCF0aGlzLnBldCkgcmV0dXJuICcnO1xuICAgIHJldHVybiBgSXQgbG9va3MgbGlrZSAke3RoaXMucGV0Lm5hbWV9IGlzICR7dGhpcy5pc1JhaW5pbmcgPyAnJyA6ICdub3QgJ31nb2luZyB0byBuZWVkIG9uZSBpbiAke3RoaXMucGV0LmxvY2F0aW9ufS5gO1xuICB9XG59XG4iXSwic291cmNlUm9vdCI6InNyYyJ9
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
