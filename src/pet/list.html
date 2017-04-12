@@ -21,7 +21,10 @@
                 <td>${pet.name}</td>
                 <td>${pet.typeName}</td>
                 <td>${pet.breedName}</td>
-                <td><a href="#pets/${pet.id}" class="pull-right">View <i class="fa fa-paw"></i></a></td>
+                <td class="text-right">
+                  <a href="#pets/${pet.id}">View <i class="fa fa-paw"></i></a>
+                  <button class="btn btn-link" click.delegate="remove(pet.id)"><i class="fa fa-times"></i></button>
+                </td>
               </tr>
               <tr if.bind="!pets.length">
                 <td colspan="4">No pets to be found.</td>

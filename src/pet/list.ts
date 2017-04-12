@@ -12,4 +12,10 @@ export class Pet {
   created(){
       this.api.getAll().then((pets:any[]) => this.pets = pets);
   }
+
+  remove(id) {
+    this.api.destroy(id).then(() => {
+      this.pets = this.pets.filter(p => p.id !== id);
+    });
+  }
 }
