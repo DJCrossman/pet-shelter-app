@@ -1,1 +1,16 @@
 /* ~ Global Styling ~ */
+body {
+  background-color: #E0EFF1;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  border-color: #7DB4B5;
+}
+
+a, .btn-link {
+  color: #680148;
+}
+
+.margin-top {
+  margin-top: 35%;
+}

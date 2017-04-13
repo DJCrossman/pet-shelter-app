@@ -2,11 +2,14 @@
   <section class="au-animate level">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12 text-center" if.bind="isLoading">
+        <div class="col-md-12 text-center margin-top" if.bind="isLoading">
           <i class="fa fa-paw fa-spin fa-3x fa-fw"></i>
           <span class="sr-only">Loading...</span>
         </div>
-        <div class="col-md-12" if.bind="!isLoading">
+        <div class="col-md-6" if.bind="!isLoading">
+          <img src="${isRaining ? 'assets/img/dog-rain.png' : 'assets/img/dog-sun.png'}" alt="${isRaining ? 'Wet Pupper' : 'Dry Pupper'}" class="img-responsive">
+        </div>
+        <div class="col-md-6" if.bind="!isLoading">
           <h2>${heading}</h2>
           <p>${message}</p>
           <p><a href="#">Lookup a different pet</a></p>
