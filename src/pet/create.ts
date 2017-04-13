@@ -4,6 +4,7 @@ import {inject} from 'aurelia-framework';
 
 declare var $;
 declare var google;
+declare var alertify;
 
 @inject(PetService, Router)
 export class Pet {
@@ -49,7 +50,7 @@ export class Pet {
         throw err;
       });
     } else {
-      console.log('Your pet is not valid!');
+      alertify.warning('Your pet is not valid!');
     }
   }
 
