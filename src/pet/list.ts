@@ -1,6 +1,8 @@
 import {PetService} from './pet-service';
 import {inject} from 'aurelia-framework';
 
+declare var alertify;
+
 @inject(PetService)
 export class Pet {
   public heading = 'Does my pet need an umbrella?';
@@ -15,12 +17,16 @@ export class Pet {
     this.api.getAll().then((pets:any[]) => {
       this.isLoading = false;
       this.pets = pets;
+    }).catch(err => {
+      alertify.error(err);
     });
   }
 
   remove(id) {
     this.api.destroy(id).then(() => {
       this.pets = this.pets.filter(p => p.id !== id);
+    }).catch(err => {  
+      alertify.error(err);
     });
   }
 }

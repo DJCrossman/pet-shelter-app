@@ -2,6 +2,8 @@ import {ForecastService} from '../forecast/forecast-service';
 import {PetService} from './pet-service';
 import {inject} from 'aurelia-framework';
 
+declare var alertify;
+
 @inject(PetService, ForecastService)
 export class Pet {
   private pet: any;
@@ -19,9 +21,11 @@ export class Pet {
           this.isRaining = forecast.currently.icon === 'rain';
         }).catch(err => {
           this.isLoading = false;
+          alertify.error(err);
         });
       }).catch(err => {
         this.isLoading = false;
+        alertify.error(err);
       });
   }
 

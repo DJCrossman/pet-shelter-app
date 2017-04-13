@@ -28,6 +28,8 @@ export class Pet {
         data: types.map(t => { return {id: t.name, text: t.name}; }),
         placeholder: 'Select a type of pet...'
       });
+    }).catch(err => {
+      alertify.error(err);
     });
   }
 
@@ -47,7 +49,7 @@ export class Pet {
         this.router.navigate('');
       }).catch((err) => {
         this.toggleButtons('reset');
-        throw err;
+        alertify.error(err);
       });
     } else {
       alertify.warning('Your pet is not valid!');
