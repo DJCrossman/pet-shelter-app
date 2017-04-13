@@ -1,4 +1,4 @@
-[
+var PetTypes = [
   {
     "id": "1",
     "name": "Bearded Dragon"
@@ -167,4 +167,6 @@
     "id": "42",
     "name": "Turtle"
   }
-]
+];
+
+export default PetTypes;
