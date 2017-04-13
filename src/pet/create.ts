@@ -3,21 +3,43 @@ import {PetService} from './pet-service';
 import {inject} from 'aurelia-framework';
 
 declare var $;
+declare var google;
 
 @inject(PetService, Router)
 export class Pet {
-  public heading = 'Add your pet';
-  public pet: any;
-  public cancel;
-  public save;
+  heading = 'Add your pet';
+  pet: any;
+  cancel;
+  save;
+  location;
+  typeName;
+  autocomplete;
+  types: any[];
 
-  constructor(private api: PetService, private router: Router){
+  constructor(private api: PetService, private router: Router){ }
+
+  attached(){
     this.pet = {};
+    this.autocomplete = new google.maps.places.Autocomplete(this.location);
+    this.api.getTypes().then((types:any[]) => {
+      this.types = types;
+      $(this.typeName).select2({
+        data: types.map(t => { return {id: t.name, text: t.name}; }),
+        placeholder: 'Select a type of pet...'
+      });
+    });
   }
 
   addMyPet() {
-    if(this.pet.name && this.pet.typeName && this.pet.breedName &&
-      this.pet.location && this.pet.lat && this.pet.long) {
+    if($(this.typeName).val()) {
+      this.pet.typeName = $(this.typeName).val();
+    }
+    if(!!this.pet.location) {
+      this.pet.lat = this.autocomplete.getPlace().geometry.location.lat();
+      this.pet.long = this.autocomplete.getPlace().geometry.location.lng();
+    }
+    if(!!this.pet.name && !!this.pet.typeName && !!this.pet.breedName &&
+      !!this.pet.location && !!this.pet.lat && !!this.pet.long) {
       this.toggleButtons('loading');
       this.api.create(this.pet).then(() => {
         this.toggleButtons('reset');

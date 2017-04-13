@@ -75,4 +75,18 @@ export class PetService {
       });
     });
   }
+
+  getTypes() {
+    return new Promise((resolve, reject) => {
+      let client = new HttpClient();
+
+      client.get(`../assets/pet-types.json`)
+      .then(resp => {
+        resolve(JSON.parse(resp.response));
+      })
+      .catch(error => {
+        reject(error);
+      });
+    });
+  }
 }
