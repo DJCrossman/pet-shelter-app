@@ -1,17 +1,8 @@
-define('app',["require", "exports", "aurelia-http-client"], function (require, exports, aurelia_http_client_1) {
+define('app',["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var App = (function () {
         function App() {
-            var _this = this;
-            var client = new aurelia_http_client_1.HttpClient();
-            client.get('../package.json').then(function (http) {
-                var data = JSON.parse(http.response);
-                if (data) {
-                    _this.appVersion = data.version;
-                    _this.appName = data.name;
-                }
-            });
         }
         App.prototype.configureRouter = function (config, router) {
             config.title = this.title;
@@ -27,7 +18,7 @@ define('app',["require", "exports", "aurelia-http-client"], function (require, e
     exports.App = App;
 });
 
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFJQTtRQU1FO1lBQUEsaUJBU0M7WUFSQyxJQUFJLE1BQU0sR0FBRyxJQUFJLGdDQUFVLEVBQUUsQ0FBQztZQUM5QixNQUFNLENBQUMsR0FBRyxDQUFDLGlCQUFpQixDQUFDLENBQUMsSUFBSSxDQUFDLFVBQUEsSUFBSTtnQkFDckMsSUFBSSxJQUFJLEdBQUcsSUFBSSxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUM7Z0JBQ3JDLEVBQUUsQ0FBQSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUM7b0JBQ1IsS0FBSSxDQUFDLFVBQVUsR0FBRyxJQUFJLENBQUMsT0FBTyxDQUFDO29CQUMvQixLQUFJLENBQUMsT0FBTyxHQUFHLElBQUksQ0FBQyxJQUFJLENBQUM7Z0JBQzNCLENBQUM7WUFDSCxDQUFDLENBQUMsQ0FBQztRQUNMLENBQUM7UUFFRCw2QkFBZSxHQUFmLFVBQWdCLE1BQTJCLEVBQUUsTUFBYztZQUN6RCxNQUFNLENBQUMsS0FBSyxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUM7WUFDMUIsTUFBTSxDQUFDLEdBQUcsQ0FBQztnQkFDVCxFQUFFLEtBQUssRUFBRSxDQUFDLEVBQUUsRUFBRSxNQUFNLENBQUMsRUFBTSxRQUFRLEVBQUUsVUFBVSxFQUFLLEtBQUssRUFBRSxhQUFhLEVBQUM7Z0JBQ3pFLEVBQUUsS0FBSyxFQUFFLFVBQVUsRUFBUSxRQUFRLEVBQUUsWUFBWSxFQUFPLEtBQUssRUFBRSxjQUFjLEVBQUM7Z0JBQzlFLEVBQUUsS0FBSyxFQUFFLFVBQVUsRUFBUSxRQUFRLEVBQUUsYUFBYSxFQUFJLEtBQUssRUFBRSxhQUFhLEVBQUM7YUFDNUUsQ0FBQyxDQUFDO1lBQ0gsSUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7UUFDdkIsQ0FBQztRQUVILFVBQUM7SUFBRCxDQTNCQSxBQTJCQyxJQUFBO0lBM0JZLGtCQUFHIiwiZmlsZSI6ImFwcC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Um91dGVyLCBSb3V0ZXJDb25maWd1cmF0aW9ufSBmcm9tICdhdXJlbGlhLXJvdXRlcic7XG5pbXBvcnQge0h0dHBDbGllbnR9IGZyb20gJ2F1cmVsaWEtaHR0cC1jbGllbnQnO1xuaW1wb3J0IHtpbmplY3R9IGZyb20gJ2F1cmVsaWEtZnJhbWV3b3JrJztcblxuZXhwb3J0IGNsYXNzIEFwcCB7XG4gIHRpdGxlOiBhbnk7XG4gIGFwcE5hbWU6IGFueTtcbiAgYXBwVmVyc2lvbjogYW55O1xuICByb3V0ZXI6IFJvdXRlcjtcblxuICBjb25zdHJ1Y3RvcigpIHtcbiAgICBsZXQgY2xpZW50ID0gbmV3IEh0dHBDbGllbnQoKTtcbiAgICBjbGllbnQuZ2V0KCcuLi9wYWNrYWdlLmpzb24nKS50aGVuKGh0dHAgPT4ge1xuICAgICAgdmFyIGRhdGEgPSBKU09OLnBhcnNlKGh0dHAucmVzcG9uc2UpO1xuICAgICAgaWYoZGF0YSkge1xuICAgICAgICB0aGlzLmFwcFZlcnNpb24gPSBkYXRhLnZlcnNpb247XG4gICAgICAgIHRoaXMuYXBwTmFtZSA9IGRhdGEubmFtZTtcbiAgICAgIH1cbiAgICB9KTtcbiAgfVxuXG4gIGNvbmZpZ3VyZVJvdXRlcihjb25maWc6IFJvdXRlckNvbmZpZ3VyYXRpb24sIHJvdXRlcjogUm91dGVyKXtcbiAgICBjb25maWcudGl0bGUgPSB0aGlzLnRpdGxlO1xuICAgIGNvbmZpZy5tYXAoW1xuICAgICAgeyByb3V0ZTogWycnLCAncGV0cyddLCAgICAgbW9kdWxlSWQ6ICdwZXQvbGlzdCcsICAgIHRpdGxlOiAnUGV0IFdlYXRoZXInfSxcbiAgICAgIHsgcm91dGU6ICdwZXRzL25ldycsICAgICAgIG1vZHVsZUlkOiAncGV0L2NyZWF0ZScsICAgICAgdGl0bGU6ICdQZXQgQ3JlYXRpb24nfSxcbiAgICAgIHsgcm91dGU6ICdwZXRzLzppZCcsICAgICAgIG1vZHVsZUlkOiAncGV0L2RldGFpbHMnLCAgIHRpdGxlOiAnUGV0IERldGFpbHMnfVxuICAgIF0pO1xuICAgIHRoaXMucm91dGVyID0gcm91dGVyO1xuICB9XG5cbn1cbiJdLCJzb3VyY2VSb290Ijoic3JjIn0=
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFFQTtRQUlFO1FBQWdCLENBQUM7UUFFakIsNkJBQWUsR0FBZixVQUFnQixNQUEyQixFQUFFLE1BQWM7WUFDekQsTUFBTSxDQUFDLEtBQUssR0FBRyxJQUFJLENBQUMsS0FBSyxDQUFDO1lBQzFCLE1BQU0sQ0FBQyxHQUFHLENBQUM7Z0JBQ1QsRUFBRSxLQUFLLEVBQUUsQ0FBQyxFQUFFLEVBQUUsTUFBTSxDQUFDLEVBQU0sUUFBUSxFQUFFLFVBQVUsRUFBSyxLQUFLLEVBQUUsYUFBYSxFQUFDO2dCQUN6RSxFQUFFLEtBQUssRUFBRSxVQUFVLEVBQVEsUUFBUSxFQUFFLFlBQVksRUFBTyxLQUFLLEVBQUUsY0FBYyxFQUFDO2dCQUM5RSxFQUFFLEtBQUssRUFBRSxVQUFVLEVBQVEsUUFBUSxFQUFFLGFBQWEsRUFBSSxLQUFLLEVBQUUsYUFBYSxFQUFDO2FBQzVFLENBQUMsQ0FBQztZQUNILElBQUksQ0FBQyxNQUFNLEdBQUcsTUFBTSxDQUFDO1FBQ3ZCLENBQUM7UUFFSCxVQUFDO0lBQUQsQ0FoQkEsQUFnQkMsSUFBQTtJQWhCWSxrQkFBRyIsImZpbGUiOiJhcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge1JvdXRlciwgUm91dGVyQ29uZmlndXJhdGlvbn0gZnJvbSAnYXVyZWxpYS1yb3V0ZXInO1xuXG5leHBvcnQgY2xhc3MgQXBwIHtcbiAgdGl0bGU6IGFueTtcbiAgcm91dGVyOiBSb3V0ZXI7XG5cbiAgY29uc3RydWN0b3IoKSB7IH1cblxuICBjb25maWd1cmVSb3V0ZXIoY29uZmlnOiBSb3V0ZXJDb25maWd1cmF0aW9uLCByb3V0ZXI6IFJvdXRlcil7XG4gICAgY29uZmlnLnRpdGxlID0gdGhpcy50aXRsZTtcbiAgICBjb25maWcubWFwKFtcbiAgICAgIHsgcm91dGU6IFsnJywgJ3BldHMnXSwgICAgIG1vZHVsZUlkOiAncGV0L2xpc3QnLCAgICB0aXRsZTogJ1BldCBXZWF0aGVyJ30sXG4gICAgICB7IHJvdXRlOiAncGV0cy9uZXcnLCAgICAgICBtb2R1bGVJZDogJ3BldC9jcmVhdGUnLCAgICAgIHRpdGxlOiAnUGV0IENyZWF0aW9uJ30sXG4gICAgICB7IHJvdXRlOiAncGV0cy86aWQnLCAgICAgICBtb2R1bGVJZDogJ3BldC9kZXRhaWxzJywgICB0aXRsZTogJ1BldCBEZXRhaWxzJ31cbiAgICBdKTtcbiAgICB0aGlzLnJvdXRlciA9IHJvdXRlcjtcbiAgfVxuXG59XG4iXSwic291cmNlUm9vdCI6InNyYyJ9
 
 define('endpoints',["require", "exports"], function (require, exports) {
     "use strict";
@@ -97,6 +88,194 @@ define('forecast/forecast-service',["require", "exports", "aurelia-http-client",
 });
 
 //# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvcmVjYXN0L2ZvcmVjYXN0LXNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0lBSUEsSUFBTSxVQUFVLEdBQUcsa0NBQWtDLENBQUM7SUFFdEQ7UUFFRTtRQUFlLENBQUM7UUFDaEIsNkJBQUcsR0FBSCxVQUFJLEdBQUcsRUFBRSxJQUFJO1lBQ1gsTUFBTSxDQUFDLElBQUksT0FBTyxDQUFDLFVBQUMsT0FBTyxFQUFFLE1BQU07Z0JBQ2pDLElBQUksTUFBTSxHQUFHLElBQUksZ0NBQVUsRUFBRSxDQUFDO2dCQUU5QixNQUFNLENBQUMsR0FBRyxDQUFJLG1CQUFTLENBQUMsV0FBVyxTQUFJLFVBQVUsU0FBSSxHQUFHLFNBQUksSUFBTSxDQUFDO3FCQUNsRSxJQUFJLENBQUMsVUFBQSxJQUFJO29CQUNSLE9BQU8sQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDO2dCQUNyQyxDQUFDLENBQUM7cUJBQ0QsS0FBSyxDQUFDLFVBQUEsS0FBSztvQkFDVixNQUFNLENBQUMsS0FBSyxDQUFDLENBQUM7Z0JBQ2hCLENBQUMsQ0FBQyxDQUFDO1lBQ0wsQ0FBQyxDQUFDLENBQUM7UUFDTCxDQUFDO1FBQ0gsc0JBQUM7SUFBRCxDQWhCQSxBQWdCQyxJQUFBO0lBaEJZLDBDQUFlIiwiZmlsZSI6ImZvcmVjYXN0L2ZvcmVjYXN0LXNlcnZpY2UuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge2luamVjdH0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xuaW1wb3J0IHtIdHRwQ2xpZW50fSBmcm9tICdhdXJlbGlhLWh0dHAtY2xpZW50JztcbmltcG9ydCBFbmRwb2ludHMgZnJvbSAnLi4vZW5kcG9pbnRzJztcblxuY29uc3QgU0VDUkVUX0tFWSA9ICdhNjgwMWU1ZjQ4M2Y3M2RlZDFmMDY0YWExYjdkZjMzMSc7XG5cbmV4cG9ydCBjbGFzcyBGb3JlY2FzdFNlcnZpY2Uge1xuXG4gIGNvbnN0cnVjdG9yKCl7IH1cbiAgZ2V0KGxhdCwgbG9uZyl7XG4gICAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlLCByZWplY3QpID0+IHtcbiAgICAgIGxldCBjbGllbnQgPSBuZXcgSHR0cENsaWVudCgpO1xuXG4gICAgICBjbGllbnQuZ2V0KGAke0VuZHBvaW50cy5Gb3JlY2FzdEFQSX0vJHtTRUNSRVRfS0VZfS8ke2xhdH0sJHtsb25nfWApXG4gICAgICAudGhlbihyZXNwID0+IHtcbiAgICAgICAgcmVzb2x2ZShKU09OLnBhcnNlKHJlc3AucmVzcG9uc2UpKTtcbiAgICAgIH0pXG4gICAgICAuY2F0Y2goZXJyb3IgPT4ge1xuICAgICAgICByZWplY3QoZXJyb3IpO1xuICAgICAgfSk7XG4gICAgfSk7XG4gIH1cbn1cbiJdLCJzb3VyY2VSb290Ijoic3JjIn0=
+
+define('resources/index',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function configure(config) {
+    }
+    exports.configure = configure;
+});
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFFQSxtQkFBMEIsTUFBOEI7SUFFeEQsQ0FBQztJQUZELDhCQUVDIiwiZmlsZSI6InJlc291cmNlcy9pbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7RnJhbWV3b3JrQ29uZmlndXJhdGlvbn0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xuXG5leHBvcnQgZnVuY3Rpb24gY29uZmlndXJlKGNvbmZpZzogRnJhbWV3b3JrQ29uZmlndXJhdGlvbikge1xuICAvL2NvbmZpZy5nbG9iYWxSZXNvdXJjZXMoW10pO1xufVxuIl0sInNvdXJjZVJvb3QiOiJzcmMifQ==
+
+define('resources/types',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var PetTypes = [
+        {
+            "id": "1",
+            "name": "Bearded Dragon"
+        },
+        {
+            "id": "2",
+            "name": "Bird"
+        },
+        {
+            "id": "3",
+            "name": "Burro"
+        },
+        {
+            "id": "4",
+            "name": "Cat"
+        },
+        {
+            "id": "5",
+            "name": "Chameleon"
+        },
+        {
+            "id": "6",
+            "name": "Chicken"
+        },
+        {
+            "id": "7",
+            "name": "Chinchilla"
+        },
+        {
+            "id": "8",
+            "name": "Chinese Water Dragon"
+        },
+        {
+            "id": "9",
+            "name": "Cow"
+        },
+        {
+            "id": "10",
+            "name": "Dog"
+        },
+        {
+            "id": "11",
+            "name": "Donkey"
+        },
+        {
+            "id": "12",
+            "name": "Duck"
+        },
+        {
+            "id": "13",
+            "name": "Ferret"
+        },
+        {
+            "id": "14",
+            "name": "Fish"
+        },
+        {
+            "id": "15",
+            "name": "Gecko"
+        },
+        {
+            "id": "16",
+            "name": "Goose"
+        },
+        {
+            "id": "17",
+            "name": "Gerbil"
+        },
+        {
+            "id": "18",
+            "name": "Goat"
+        },
+        {
+            "id": "19",
+            "name": "Guinea Fowl"
+        },
+        {
+            "id": "20",
+            "name": "Guinea Pig"
+        },
+        {
+            "id": "21",
+            "name": "Hamster"
+        },
+        {
+            "id": "22",
+            "name": "Horse"
+        },
+        {
+            "id": "23",
+            "name": "Iguana"
+        },
+        {
+            "id": "24",
+            "name": "Llama"
+        },
+        {
+            "id": "25",
+            "name": "Lizard"
+        },
+        {
+            "id": "26",
+            "name": "Mice"
+        },
+        {
+            "id": "27",
+            "name": "Mule"
+        },
+        {
+            "id": "28",
+            "name": "Peafowl"
+        },
+        {
+            "id": "29",
+            "name": "Pig or Hog"
+        },
+        {
+            "id": "30",
+            "name": "Pigeon"
+        },
+        {
+            "id": "31",
+            "name": "Ponie"
+        },
+        {
+            "id": "32",
+            "name": "Pot Bellied Pig"
+        },
+        {
+            "id": "33",
+            "name": "Rabbit"
+        },
+        {
+            "id": "34",
+            "name": "Rat"
+        },
+        {
+            "id": "35",
+            "name": "Sheep"
+        },
+        {
+            "id": "36",
+            "name": "Skink"
+        },
+        {
+            "id": "37",
+            "name": "Snake"
+        },
+        {
+            "id": "38",
+            "name": "Stick Insect"
+        },
+        {
+            "id": "39",
+            "name": "Sugar Glider"
+        },
+        {
+            "id": "40",
+            "name": "Tarantula"
+        },
+        {
+            "id": "41",
+            "name": "Turkey"
+        },
+        {
+            "id": "42",
+            "name": "Turtle"
+        }
+    ];
+    exports.default = PetTypes;
+});
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,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VixNQUFNLEVBQUUsS0FBSztTQUNkO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxPQUFPO1NBQ2hCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxPQUFPO1NBQ2hCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxPQUFPO1NBQ2hCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxjQUFjO1NBQ3ZCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxjQUFjO1NBQ3ZCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxXQUFXO1NBQ3BCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxRQUFRO1NBQ2pCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxRQUFRO1NBQ2pCO0tBQ0YsQ0FBQztJQUVGLGtCQUFlLFFBQVEsQ0FBQyIsImZpbGUiOiJyZXNvdXJjZXMvdHlwZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgUGV0VHlwZXMgPSBbXG4gIHtcbiAgICBcImlkXCI6IFwiMVwiLFxuICAgIFwibmFtZVwiOiBcIkJlYXJkZWQgRHJhZ29uXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyXCIsXG4gICAgXCJuYW1lXCI6IFwiQmlyZFwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiM1wiLFxuICAgIFwibmFtZVwiOiBcIkJ1cnJvXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI0XCIsXG4gICAgXCJuYW1lXCI6IFwiQ2F0XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI1XCIsXG4gICAgXCJuYW1lXCI6IFwiQ2hhbWVsZW9uXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI2XCIsXG4gICAgXCJuYW1lXCI6IFwiQ2hpY2tlblwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiN1wiLFxuICAgIFwibmFtZVwiOiBcIkNoaW5jaGlsbGFcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjhcIixcbiAgICBcIm5hbWVcIjogXCJDaGluZXNlIFdhdGVyIERyYWdvblwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiOVwiLFxuICAgIFwibmFtZVwiOiBcIkNvd1wiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMTBcIixcbiAgICBcIm5hbWVcIjogXCJEb2dcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjExXCIsXG4gICAgXCJuYW1lXCI6IFwiRG9ua2V5XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIxMlwiLFxuICAgIFwibmFtZVwiOiBcIkR1Y2tcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjEzXCIsXG4gICAgXCJuYW1lXCI6IFwiRmVycmV0XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIxNFwiLFxuICAgIFwibmFtZVwiOiBcIkZpc2hcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE1XCIsXG4gICAgXCJuYW1lXCI6IFwiR2Vja29cIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE2XCIsXG4gICAgXCJuYW1lXCI6IFwiR29vc2VcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE3XCIsXG4gICAgXCJuYW1lXCI6IFwiR2VyYmlsXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIxOFwiLFxuICAgIFwibmFtZVwiOiBcIkdvYXRcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE5XCIsXG4gICAgXCJuYW1lXCI6IFwiR3VpbmVhIEZvd2xcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjIwXCIsXG4gICAgXCJuYW1lXCI6IFwiR3VpbmVhIFBpZ1wiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjFcIixcbiAgICBcIm5hbWVcIjogXCJIYW1zdGVyXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyMlwiLFxuICAgIFwibmFtZVwiOiBcIkhvcnNlXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyM1wiLFxuICAgIFwibmFtZVwiOiBcIklndWFuYVwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjRcIixcbiAgICBcIm5hbWVcIjogXCJMbGFtYVwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjVcIixcbiAgICBcIm5hbWVcIjogXCJMaXphcmRcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjI2XCIsXG4gICAgXCJuYW1lXCI6IFwiTWljZVwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjdcIixcbiAgICBcIm5hbWVcIjogXCJNdWxlXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyOFwiLFxuICAgIFwibmFtZVwiOiBcIlBlYWZvd2xcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjI5XCIsXG4gICAgXCJuYW1lXCI6IFwiUGlnIG9yIEhvZ1wiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMzBcIixcbiAgICBcIm5hbWVcIjogXCJQaWdlb25cIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjMxXCIsXG4gICAgXCJuYW1lXCI6IFwiUG9uaWVcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjMyXCIsXG4gICAgXCJuYW1lXCI6IFwiUG90IEJlbGxpZWQgUGlnXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIzM1wiLFxuICAgIFwibmFtZVwiOiBcIlJhYmJpdFwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMzRcIixcbiAgICBcIm5hbWVcIjogXCJSYXRcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM1XCIsXG4gICAgXCJuYW1lXCI6IFwiU2hlZXBcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM2XCIsXG4gICAgXCJuYW1lXCI6IFwiU2tpbmtcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM3XCIsXG4gICAgXCJuYW1lXCI6IFwiU25ha2VcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM4XCIsXG4gICAgXCJuYW1lXCI6IFwiU3RpY2sgSW5zZWN0XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIzOVwiLFxuICAgIFwibmFtZVwiOiBcIlN1Z2FyIEdsaWRlclwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiNDBcIixcbiAgICBcIm5hbWVcIjogXCJUYXJhbnR1bGFcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjQxXCIsXG4gICAgXCJuYW1lXCI6IFwiVHVya2V5XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI0MlwiLFxuICAgIFwibmFtZVwiOiBcIlR1cnRsZVwiXG4gIH1cbl07XG5cbmV4cG9ydCBkZWZhdWx0IFBldFR5cGVzO1xuIl0sInNvdXJjZVJvb3QiOiJzcmMifQ==
 
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -358,194 +537,6 @@ define('pet/pet-service',["require", "exports", "aurelia-http-client", "../endpo
 });
 
 //# sourceMappingURL=data:application/json;charset=utf8;base64,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LENBQUM7Z0JBRTlCLE1BQU0sQ0FBQyxNQUFNLENBQUksbUJBQVMsQ0FBQyxhQUFhLGNBQVMsRUFBSSxDQUFDO3FCQUNyRCxJQUFJLENBQUMsVUFBQSxJQUFJO29CQUNSLE9BQU8sQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDO2dCQUNyQyxDQUFDLENBQUM7cUJBQ0QsS0FBSyxDQUFDLFVBQUEsS0FBSztvQkFDVixNQUFNLENBQUMsS0FBSyxDQUFDLENBQUM7Z0JBQ2hCLENBQUMsQ0FBQyxDQUFDO1lBQ0wsQ0FBQyxDQUFDLENBQUM7UUFDTCxDQUFDO1FBRUQsNkJBQVEsR0FBUjtZQUNFLE1BQU0sQ0FBQyxJQUFJLE9BQU8sQ0FBQyxVQUFDLE9BQU8sRUFBRSxNQUFNO2dCQUNqQyxPQUFPLENBQUMsZUFBUSxDQUFDLENBQUM7WUFDcEIsQ0FBQyxDQUFDLENBQUM7UUFDTCxDQUFDO1FBQ0gsaUJBQUM7SUFBRCxDQS9FQSxBQStFQyxJQUFBO0lBL0VZLGdDQUFVIiwiZmlsZSI6InBldC9wZXQtc2VydmljZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7aW5qZWN0fSBmcm9tICdhdXJlbGlhLWZyYW1ld29yayc7XG5pbXBvcnQge0h0dHBDbGllbnR9IGZyb20gJ2F1cmVsaWEtaHR0cC1jbGllbnQnO1xuaW1wb3J0IEVuZHBvaW50cyBmcm9tICcuLi9lbmRwb2ludHMnO1xuaW1wb3J0IFBldFR5cGVzIGZyb20gJy4uL3Jlc291cmNlcy90eXBlcyc7XG5cbmV4cG9ydCBjbGFzcyBQZXRTZXJ2aWNlIHtcblxuICBjb25zdHJ1Y3RvcigpeyB9XG5cbiAgY3JlYXRlKHBldCl7XG4gICAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlLCByZWplY3QpID0+IHtcbiAgICAgIGxldCBjbGllbnQgPSBuZXcgSHR0cENsaWVudCgpO1xuXG4gICAgICBjbGllbnQucG9zdChgJHtFbmRwb2ludHMuUGV0U2hlbHRlckFQSX0vcGV0c2AsIHBldClcbiAgICAgIC50aGVuKHJlc3AgPT4ge1xuICAgICAgICByZXNvbHZlKEpTT04ucGFyc2UocmVzcC5yZXNwb25zZSkpO1xuICAgICAgfSlcbiAgICAgIC5jYXRjaChlcnJvciA9PiB7XG4gICAgICAgIHJlamVjdChlcnJvcik7XG4gICAgICB9KTtcbiAgICB9KTtcbiAgfVxuXG4gIGdldChpZCl7XG4gICAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlLCByZWplY3QpID0+IHtcbiAgICAgIGxldCBjbGllbnQgPSBuZXcgSHR0cENsaWVudCgpO1xuXG4gICAgICBjbGllbnQuZ2V0KGAke0VuZHBvaW50cy5QZXRTaGVsdGVyQVBJfS9wZXRzLyR7aWR9YClcbiAgICAgIC50aGVuKHJlc3AgPT4ge1xuICAgICAgICByZXNvbHZlKEpTT04ucGFyc2UocmVzcC5yZXNwb25zZSkpO1xuICAgICAgfSlcbiAgICAgIC5jYXRjaChlcnJvciA9PiB7XG4gICAgICAgIHJlamVjdChlcnJvcik7XG4gICAgICB9KTtcbiAgICB9KTtcbiAgfVxuXG4gIGdldEFsbCgpe1xuICAgIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSwgcmVqZWN0KSA9PiB7XG4gICAgICBsZXQgY2xpZW50ID0gbmV3IEh0dHBDbGllbnQoKTtcblxuICAgICAgY2xpZW50LmdldChgJHtFbmRwb2ludHMuUGV0U2hlbHRlckFQSX0vcGV0c2ApXG4gICAgICAudGhlbihyZXNwID0+IHtcbiAgICAgICAgcmVzb2x2ZShKU09OLnBhcnNlKHJlc3AucmVzcG9uc2UpKTtcbiAgICAgIH0pXG4gICAgICAuY2F0Y2goZXJyb3IgPT4ge1xuICAgICAgICByZWplY3QoZXJyb3IpO1xuICAgICAgfSk7XG4gICAgfSk7XG4gIH1cblxuICB1cGRhdGUocGV0KXtcbiAgICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4ge1xuICAgICAgbGV0IGNsaWVudCA9IG5ldyBIdHRwQ2xpZW50KCk7XG5cbiAgICAgIGNsaWVudC5wdXQoYCR7RW5kcG9pbnRzLlBldFNoZWx0ZXJBUEl9L3BldHMvJHtwZXQuaWR9YCwgcGV0KVxuICAgICAgLnRoZW4ocmVzcCA9PiB7XG4gICAgICAgIHJlc29sdmUoSlNPTi5wYXJzZShyZXNwLnJlc3BvbnNlKSk7XG4gICAgICB9KVxuICAgICAgLmNhdGNoKGVycm9yID0+IHtcbiAgICAgICAgcmVqZWN0KGVycm9yKTtcbiAgICAgIH0pO1xuICAgIH0pO1xuICB9XG5cbiAgZGVzdHJveShpZCl7XG4gICAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlLCByZWplY3QpID0+IHtcbiAgICAgIGxldCBjbGllbnQgPSBuZXcgSHR0cENsaWVudCgpO1xuXG4gICAgICBjbGllbnQuZGVsZXRlKGAke0VuZHBvaW50cy5QZXRTaGVsdGVyQVBJfS9wZXRzLyR7aWR9YClcbiAgICAgIC50aGVuKHJlc3AgPT4ge1xuICAgICAgICByZXNvbHZlKEpTT04ucGFyc2UocmVzcC5yZXNwb25zZSkpO1xuICAgICAgfSlcbiAgICAgIC5jYXRjaChlcnJvciA9PiB7XG4gICAgICAgIHJlamVjdChlcnJvcik7XG4gICAgICB9KTtcbiAgICB9KTtcbiAgfVxuXG4gIGdldFR5cGVzKCkge1xuICAgIHJldHVybiBuZXcgUHJvbWlzZSgocmVzb2x2ZSwgcmVqZWN0KSA9PiB7XG4gICAgICByZXNvbHZlKFBldFR5cGVzKTtcbiAgICB9KTtcbiAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiJzcmMifQ==
-
-define('resources/index',["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    function configure(config) {
-    }
-    exports.configure = configure;
-});
-
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7SUFFQSxtQkFBMEIsTUFBOEI7SUFFeEQsQ0FBQztJQUZELDhCQUVDIiwiZmlsZSI6InJlc291cmNlcy9pbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7RnJhbWV3b3JrQ29uZmlndXJhdGlvbn0gZnJvbSAnYXVyZWxpYS1mcmFtZXdvcmsnO1xuXG5leHBvcnQgZnVuY3Rpb24gY29uZmlndXJlKGNvbmZpZzogRnJhbWV3b3JrQ29uZmlndXJhdGlvbikge1xuICAvL2NvbmZpZy5nbG9iYWxSZXNvdXJjZXMoW10pO1xufVxuIl0sInNvdXJjZVJvb3QiOiJzcmMifQ==
-
-define('resources/types',["require", "exports"], function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var PetTypes = [
-        {
-            "id": "1",
-            "name": "Bearded Dragon"
-        },
-        {
-            "id": "2",
-            "name": "Bird"
-        },
-        {
-            "id": "3",
-            "name": "Burro"
-        },
-        {
-            "id": "4",
-            "name": "Cat"
-        },
-        {
-            "id": "5",
-            "name": "Chameleon"
-        },
-        {
-            "id": "6",
-            "name": "Chicken"
-        },
-        {
-            "id": "7",
-            "name": "Chinchilla"
-        },
-        {
-            "id": "8",
-            "name": "Chinese Water Dragon"
-        },
-        {
-            "id": "9",
-            "name": "Cow"
-        },
-        {
-            "id": "10",
-            "name": "Dog"
-        },
-        {
-            "id": "11",
-            "name": "Donkey"
-        },
-        {
-            "id": "12",
-            "name": "Duck"
-        },
-        {
-            "id": "13",
-            "name": "Ferret"
-        },
-        {
-            "id": "14",
-            "name": "Fish"
-        },
-        {
-            "id": "15",
-            "name": "Gecko"
-        },
-        {
-            "id": "16",
-            "name": "Goose"
-        },
-        {
-            "id": "17",
-            "name": "Gerbil"
-        },
-        {
-            "id": "18",
-            "name": "Goat"
-        },
-        {
-            "id": "19",
-            "name": "Guinea Fowl"
-        },
-        {
-            "id": "20",
-            "name": "Guinea Pig"
-        },
-        {
-            "id": "21",
-            "name": "Hamster"
-        },
-        {
-            "id": "22",
-            "name": "Horse"
-        },
-        {
-            "id": "23",
-            "name": "Iguana"
-        },
-        {
-            "id": "24",
-            "name": "Llama"
-        },
-        {
-            "id": "25",
-            "name": "Lizard"
-        },
-        {
-            "id": "26",
-            "name": "Mice"
-        },
-        {
-            "id": "27",
-            "name": "Mule"
-        },
-        {
-            "id": "28",
-            "name": "Peafowl"
-        },
-        {
-            "id": "29",
-            "name": "Pig or Hog"
-        },
-        {
-            "id": "30",
-            "name": "Pigeon"
-        },
-        {
-            "id": "31",
-            "name": "Ponie"
-        },
-        {
-            "id": "32",
-            "name": "Pot Bellied Pig"
-        },
-        {
-            "id": "33",
-            "name": "Rabbit"
-        },
-        {
-            "id": "34",
-            "name": "Rat"
-        },
-        {
-            "id": "35",
-            "name": "Sheep"
-        },
-        {
-            "id": "36",
-            "name": "Skink"
-        },
-        {
-            "id": "37",
-            "name": "Snake"
-        },
-        {
-            "id": "38",
-            "name": "Stick Insect"
-        },
-        {
-            "id": "39",
-            "name": "Sugar Glider"
-        },
-        {
-            "id": "40",
-            "name": "Tarantula"
-        },
-        {
-            "id": "41",
-            "name": "Turkey"
-        },
-        {
-            "id": "42",
-            "name": "Turtle"
-        }
-    ];
-    exports.default = PetTypes;
-});
-
-//# sourceMappingURL=data:application/json;charset=utf8;base64,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VixNQUFNLEVBQUUsS0FBSztTQUNkO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxPQUFPO1NBQ2hCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxPQUFPO1NBQ2hCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxPQUFPO1NBQ2hCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxjQUFjO1NBQ3ZCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxjQUFjO1NBQ3ZCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxXQUFXO1NBQ3BCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxRQUFRO1NBQ2pCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSTtZQUNWLE1BQU0sRUFBRSxRQUFRO1NBQ2pCO0tBQ0YsQ0FBQztJQUVGLGtCQUFlLFFBQVEsQ0FBQyIsImZpbGUiOiJyZXNvdXJjZXMvdHlwZXMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgUGV0VHlwZXMgPSBbXG4gIHtcbiAgICBcImlkXCI6IFwiMVwiLFxuICAgIFwibmFtZVwiOiBcIkJlYXJkZWQgRHJhZ29uXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyXCIsXG4gICAgXCJuYW1lXCI6IFwiQmlyZFwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiM1wiLFxuICAgIFwibmFtZVwiOiBcIkJ1cnJvXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI0XCIsXG4gICAgXCJuYW1lXCI6IFwiQ2F0XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI1XCIsXG4gICAgXCJuYW1lXCI6IFwiQ2hhbWVsZW9uXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI2XCIsXG4gICAgXCJuYW1lXCI6IFwiQ2hpY2tlblwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiN1wiLFxuICAgIFwibmFtZVwiOiBcIkNoaW5jaGlsbGFcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjhcIixcbiAgICBcIm5hbWVcIjogXCJDaGluZXNlIFdhdGVyIERyYWdvblwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiOVwiLFxuICAgIFwibmFtZVwiOiBcIkNvd1wiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMTBcIixcbiAgICBcIm5hbWVcIjogXCJEb2dcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjExXCIsXG4gICAgXCJuYW1lXCI6IFwiRG9ua2V5XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIxMlwiLFxuICAgIFwibmFtZVwiOiBcIkR1Y2tcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjEzXCIsXG4gICAgXCJuYW1lXCI6IFwiRmVycmV0XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIxNFwiLFxuICAgIFwibmFtZVwiOiBcIkZpc2hcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE1XCIsXG4gICAgXCJuYW1lXCI6IFwiR2Vja29cIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE2XCIsXG4gICAgXCJuYW1lXCI6IFwiR29vc2VcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE3XCIsXG4gICAgXCJuYW1lXCI6IFwiR2VyYmlsXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIxOFwiLFxuICAgIFwibmFtZVwiOiBcIkdvYXRcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjE5XCIsXG4gICAgXCJuYW1lXCI6IFwiR3VpbmVhIEZvd2xcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjIwXCIsXG4gICAgXCJuYW1lXCI6IFwiR3VpbmVhIFBpZ1wiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjFcIixcbiAgICBcIm5hbWVcIjogXCJIYW1zdGVyXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyMlwiLFxuICAgIFwibmFtZVwiOiBcIkhvcnNlXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyM1wiLFxuICAgIFwibmFtZVwiOiBcIklndWFuYVwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjRcIixcbiAgICBcIm5hbWVcIjogXCJMbGFtYVwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjVcIixcbiAgICBcIm5hbWVcIjogXCJMaXphcmRcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjI2XCIsXG4gICAgXCJuYW1lXCI6IFwiTWljZVwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMjdcIixcbiAgICBcIm5hbWVcIjogXCJNdWxlXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIyOFwiLFxuICAgIFwibmFtZVwiOiBcIlBlYWZvd2xcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjI5XCIsXG4gICAgXCJuYW1lXCI6IFwiUGlnIG9yIEhvZ1wiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMzBcIixcbiAgICBcIm5hbWVcIjogXCJQaWdlb25cIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjMxXCIsXG4gICAgXCJuYW1lXCI6IFwiUG9uaWVcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjMyXCIsXG4gICAgXCJuYW1lXCI6IFwiUG90IEJlbGxpZWQgUGlnXCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIzM1wiLFxuICAgIFwibmFtZVwiOiBcIlJhYmJpdFwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiMzRcIixcbiAgICBcIm5hbWVcIjogXCJSYXRcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM1XCIsXG4gICAgXCJuYW1lXCI6IFwiU2hlZXBcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM2XCIsXG4gICAgXCJuYW1lXCI6IFwiU2tpbmtcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM3XCIsXG4gICAgXCJuYW1lXCI6IFwiU25ha2VcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjM4XCIsXG4gICAgXCJuYW1lXCI6IFwiU3RpY2sgSW5zZWN0XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCIzOVwiLFxuICAgIFwibmFtZVwiOiBcIlN1Z2FyIEdsaWRlclwiXG4gIH0sXG4gIHtcbiAgICBcImlkXCI6IFwiNDBcIixcbiAgICBcIm5hbWVcIjogXCJUYXJhbnR1bGFcIlxuICB9LFxuICB7XG4gICAgXCJpZFwiOiBcIjQxXCIsXG4gICAgXCJuYW1lXCI6IFwiVHVya2V5XCJcbiAgfSxcbiAge1xuICAgIFwiaWRcIjogXCI0MlwiLFxuICAgIFwibmFtZVwiOiBcIlR1cnRsZVwiXG4gIH1cbl07XG5cbmV4cG9ydCBkZWZhdWx0IFBldFR5cGVzO1xuIl0sInNvdXJjZVJvb3QiOiJzcmMifQ==
 
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <router-view></router-view>\n</template>\n"; });
 define('text!pet/create.html', ['module'], function(module) { module.exports = "<template>\n  <section class=\"au-animate level\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-md-12 text-center\">\n          <h2>${heading}</h2>\n        </div>\n        <div class=\"col-md-12\">\n          <form class=\"form-horizontal\" autocomplete=\"off\">\n            <div class=\"form-group required\">\n              <label for=\"name\" class=\"col-sm-offset-2 col-sm-2 control-label\">Name</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" id=\"name\" value.bind=\"pet.name\" placeholder=\"Enter a name...\">\n              </div>\n            </div>\n            <div class=\"form-group required\">\n              <label for=\"typeName\" class=\"col-sm-offset-2 col-sm-2 control-label\">Type</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" id=\"typeName\" ref=\"typeName\" value.bind=\"pet.typeName\" placeholder=\"Enter a type...\">\n              </div>\n            </div>\n            <div class=\"form-group required\">\n              <label for=\"breedName\" class=\"col-sm-offset-2 col-sm-2 control-label\">Breed</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" id=\"breedName\" value.bind=\"pet.breedName\" placeholder=\"Enter a breed...\">\n              </div>\n            </div>\n            <div class=\"form-group required\">\n              <label for=\"location\" class=\"col-sm-offset-2 col-sm-2 control-label\">Location</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" id=\"location\" ref=\"location\" value.bind=\"pet.location\" placeholder=\"Enter a location...\">\n              </div>\n            </div>\n            <div class=\"form-group\">\n              <div class=\"col-sm-10 text-right\">\n                <a href=\"#pets\" class=\"btn btn-link\" ref=\"cancel\">Go back</a>\n                <a class=\"btn btn-default\" click.delegate=\"addMyPet()\" ref=\"save\" data-loading-text=\"Adding your pet...\">Add my pet!</a>\n              </div>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </section>\n</template>\n"; });

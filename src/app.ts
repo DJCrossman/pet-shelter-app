@@ -1,23 +1,10 @@
 import {Router, RouterConfiguration} from 'aurelia-router';
-import {HttpClient} from 'aurelia-http-client';
-import {inject} from 'aurelia-framework';
 
 export class App {
   title: any;
-  appName: any;
-  appVersion: any;
   router: Router;
 
-  constructor() {
-    let client = new HttpClient();
-    client.get('../package.json').then(http => {
-      var data = JSON.parse(http.response);
-      if(data) {
-        this.appVersion = data.version;
-        this.appName = data.name;
-      }
-    });
-  }
+  constructor() { }
 
   configureRouter(config: RouterConfiguration, router: Router){
     config.title = this.title;
