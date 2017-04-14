@@ -1,6 +1,11 @@
 /* ~ Global Styling ~ */
-body {
+body, html, section {
   background-color: #E0EFF1;
+  height: 100%;
+}
+
+.container-fluid {
+  margin-bottom: 15px;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
@@ -10,8 +15,24 @@ body {
 .margin-top {
   margin-top: 50px;
 }
+@media (min-width: 992px) {
+  .margin-top {
+    margin-top: 250px;
+  }
+}
+
+.no-padding {
+  padding: 0px;
+}
 
 .form-group.required .control-label:after {
    content:" *";
    color:red;
+}
+
+.pet-card, .pet-table, .pet-create {
+  margin: 15px;
+  background-color: white;
+  border-right: thin solid #ccc;
+  border-bottom: thin solid #ccc;
 }

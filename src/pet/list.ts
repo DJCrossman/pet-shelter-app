@@ -5,14 +5,20 @@ declare var alertify;
 
 @inject(PetService)
 export class Pet {
-  public heading = 'Does my pet need an umbrella?';
-  public subheading = 'Select a pet to find out.';
-  public pets: any[];
-  private isLoading: boolean = false;
+  heading = 'Does my pet need an umbrella?';
+  subheading = 'Select a pet to find out.';
+  isLoading: boolean = false;
+  displayBy:string = 'card';
+  pets: any[];
+  search;
 
   constructor(private api: PetService){ }
 
   created(){
+    this.getAllPets();
+  }
+
+  getAllPets() {
     this.isLoading = true;
     this.api.getAll().then((pets:any[]) => {
       this.isLoading = false;
@@ -25,8 +31,14 @@ export class Pet {
   remove(id) {
     this.api.destroy(id).then(() => {
       this.pets = this.pets.filter(p => p.id !== id);
-    }).catch(err => {  
+    }).catch(err => {
       alertify.error(err);
     });
+  }
+
+  get filteredPets() {
+    return this.search.value ?
+      this.pets.filter(p => p.name.toLowerCase().includes(this.search.value.toLowerCase())) :
+      this.pets;
   }
 }
