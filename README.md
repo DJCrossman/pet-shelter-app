@@ -13,7 +13,7 @@ An app to display if a Pet should use an umbrella based on the weather at it’s
 **Github:** [https://github.com/DJCrossman/pet-shelter-services](https://github.com/DJCrossman/pet-shelter-services) <br/>
 #### Public App
 **Live Demo:**
- [https://pet-shelter-services.herokuapp.com](https://pet-shelter-services.herokuapp.com) <br/>
+ [https://djcrossman.github.io/pet-shelter-application/](https://djcrossman.github.io/pet-shelter-application/) <br/>
 
 ## Design and Tools
 #### Public API

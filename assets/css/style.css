@@ -1,11 +1,15 @@
 /* ~ Global Styling ~ */
-body, html, section {
+body, html {
   background-color: #E0EFF1;
-  height: 100%;
+}
+
+footer {
+  width: 100%;
+  margin-top: 15px;
 }
 
 .container-fluid {
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
