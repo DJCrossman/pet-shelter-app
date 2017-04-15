@@ -4,7 +4,7 @@ import {inject} from 'aurelia-framework';
 declare var alertify;
 
 @inject(PetService)
-export class Pet {
+export class PetListView {
   heading = 'Does my pet need an umbrella?';
   subheading = 'Select a pet to find out.';
   isLoading: boolean = false;

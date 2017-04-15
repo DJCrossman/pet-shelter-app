@@ -5,7 +5,7 @@ import {inject} from 'aurelia-framework';
 declare var alertify;
 
 @inject(PetService, ForecastService)
-export class Pet {
+export class PetDetailsView {
   private pet: any;
   private isRaining: boolean;
   private isLoading: boolean = false;

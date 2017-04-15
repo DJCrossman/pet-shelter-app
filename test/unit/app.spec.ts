@@ -1,7 +1,7 @@
 import {App} from '../../src/app';
 
 describe('the app', () => {
-  it('says hello', () => {
-    expect(new App().message).toBe('Hello World!');
+  it('has title', () => {
+    expect(new App().title).not.toBeTruthy();
   });
 });

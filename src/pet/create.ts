@@ -7,7 +7,7 @@ declare var google;
 declare var alertify;
 
 @inject(PetService, Router)
-export class Pet {
+export class PetCreateView {
   heading = 'Add your pet';
   pet: any;
   cancel;
