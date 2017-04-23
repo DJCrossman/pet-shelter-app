@@ -8,8 +8,6 @@ angular.module('myApp', [
   'myApp.listPet',
   'myApp.version'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
-  $routeProvider.otherwise({redirectTo: '/pets'});
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.otherwise({redirectTo: 'pets'});
 }]);

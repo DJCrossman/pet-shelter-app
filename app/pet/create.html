@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2>${heading}</h2>
+        <h2>{{heading}}</h2>
       </div>
       <div class="col-md-6 col-md-offset-3">
         <div class="pet-create panel panel-default">
@@ -10,24 +10,24 @@
             <form class="form" autocomplete="off">
               <div class="form-group required">
                 <label for="name" class="control-label">Name</label>
-                <input type="text" class="form-control" id="name" value.bind="pet.name" placeholder="Enter a name...">
+                <input type="text" class="form-control" id="name" ng-model="pet.name" placeholder="Enter a name...">
               </div>
               <div class="form-group required">
                 <label for="typeName" class="control-label">Type</label>
-                <input type="text" class="form-control" id="typeName" ref="typeName" value.bind="pet.typeName" placeholder="Enter a type...">
+                <input type="text" class="form-control" id="typeName" ng-model="pet.typeName" placeholder="Enter a type...">
               </div>
               <div class="form-group required">
                 <label for="breedName" class="control-label">Breed</label>
-                <input type="text" class="form-control" id="breedName" value.bind="pet.breedName" placeholder="Enter a breed...">
+                <input type="text" class="form-control" id="breedName" ng-model="pet.breedName" placeholder="Enter a breed...">
               </div>
               <div class="form-group required">
                 <label for="location" class="control-label">Location</label>
-                <input type="text" class="form-control" id="location" ref="location" value.bind="pet.location" placeholder="Enter a location...">
+                <input type="text" class="form-control" id="location" ng-model="pet.location" placeholder="Enter a location...">
               </div>
               <div class="form-group">
                 <div class="text-right">
-                  <a href="#pets" class="btn btn-link" ref="cancel">Go back</a>
-                  <a class="btn btn-default" click.delegate="addMyPet()" ref="save" data-loading-text="Adding your pet...">Add my pet!</a>
+                  <a href="#pets" class="btn btn-link" id="x-cancel">Go back</a>
+                  <a class="btn btn-default" ng-click="addMyPet(pet)" id="x-save" data-loading-text="Adding your pet...">Add my pet!</a>
                 </div>
               </div>
             </form>
