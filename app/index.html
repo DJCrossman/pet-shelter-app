@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+  <head>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+      <meta name="description" content="">
+      <meta name="author" content="David Crossman">
+
+      <title>PetSheltr</title>
+
+      <!-- Bootstrap Core CSS -->
+      <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+      <link href="assets/css/select2.min.css" rel="stylesheet">
+      <link href="assets/css/alertify.min.css" rel="stylesheet">
+
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="assets/css/style.css">
+
+      <!-- Custom Fonts -->
+      <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body aurelia-app="main">
+
+  <div ng-view></div>
+
+  <footer class="text-center">
+    <span>
+      © David Crossman | v<span app-version></span> | <a href="https://github.com/DJCrossman/pet-shelter-application"><i class="fa fa-github"></i> View on GitHub</a>
+    </span>
+  </footer>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+
+    <!-- jQuery -->
+  <script src="assets/js/jquery.js"></script>
+
+  <!-- Various Core JavaScript -->
+  <script src="assets/js/select2.full.min.js"></script>
+  <script src="assets/js/alertify.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM9cGblCBWeHE5uTjwrezO1LqglllRfQY&libraries=places" async defer></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="assets/js/bootstrap.min.js"></script>
+
+  <!-- Angular Core JavaScript -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="pet/create.js"></script>
+  <script src="pet/details.js"></script>
+  <script src="pet/list.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
